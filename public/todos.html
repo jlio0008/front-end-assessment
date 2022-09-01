@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GO REST To-Dos</title>
+        <meta name="description" content="Go Rest Post Model">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css">
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" language="javascript" 
+        src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
+    </head>
+
+    <body>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="posts.html">Posts</a>
+            <a href="users.html">Users</a>
+            <a href="comments.html">Comments</a>
+            <a href="todos.html">To-Dos</a>
+        </nav>
+        <div class="container" style="width:60%;">
+            <table id="to-dos">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">USER ID</th>
+                        <th scope="col">TITLE</th>
+                        <th scope="col">DUE ON</th>
+                        <th scope="col">STATUS</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+      
+      <!--Create New User-->
+      <!-- <form class="form-signin" method="POST" action="https://gorest.co.in/public/v2/users?access-token=b1025a737ad8ca4f8af408f55631494367433c79a94d76a32699e8f5b7656acd">
+        <input class="form-control" type="text" required name="name" placeholder="name">
+        <input class="form-control" type="text" required name="email" placeholder="email">
+        <input class="form-control" type="text" required name="gender" placeholder="gender">
+        <input class="form-control" type="text" required name="status" placeholder="status">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create New User</button>
+      </form> -->
+
+      <script type="text/javascript" class="init">
+        $(document).ready(function() {
+          // Create a new DataTable object
+          table = $('#to-dos').DataTable({
+               ajax: {
+                 url: '/to-dosData',
+               },
+               columns: [
+                   { data: 'id' },
+                   { data: 'user_id' },
+                   { data: 'title' },
+                   { data: 'due_on'},
+                   { data: 'status' }
+                 ]
+               })
+        });
+      </script>
+    </body>
+</html>
